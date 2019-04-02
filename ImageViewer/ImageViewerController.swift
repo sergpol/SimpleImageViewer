@@ -13,6 +13,8 @@ public final class ImageViewerController: UIViewController {
         return true
     }
     
+    public var dismissCompletion: () -> Void = {}
+    
     public init(configuration: ImageViewerConfiguration?) {
         self.configuration = configuration
         super.init(nibName: String(describing: type(of: self)), bundle: Bundle(for: type(of: self)))
@@ -95,7 +97,7 @@ private extension ImageViewerController {
     }
     
     @IBAction func closeButtonPressed() {
-        dismiss(animated: true)
+        dismiss(animated: true, completion: dismissCompletion)
     }
     
     @objc func imageViewDoubleTapped(recognizer: UITapGestureRecognizer) {
