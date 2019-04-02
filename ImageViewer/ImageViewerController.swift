@@ -127,7 +127,7 @@ private extension ImageViewerController {
         switch recognizer.state {
         case .began:
             transitionHandler?.dismissInteractively = true
-            dismiss(animated: true)
+            dismiss(animated: true, completion: dismissCompletion)
         case .changed:
             let percentage = abs(translation.y) / imageView.bounds.height
             transitionHandler?.dismissalInteractor.update(percentage: percentage)
